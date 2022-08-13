@@ -3,6 +3,7 @@ const board = document.getElementById('board');
 const finalMessageElement = document.getElementById('finalMessage');
 const finalMessageText = document.querySelector('[final-message-text]');
 const restartButton = document.getElementById("restartButton");
+const buttonText = document.getElementById("restartButton")
 let turn; // x is o, 1 is x
 const x_class = 'x';
 const o_class = 'o';
@@ -17,9 +18,12 @@ const winning_combinatinos = [
     [2, 4, 6]
 ];
 
-startGame();
+//startGame();
 
-restartButton.addEventListener('click', startGame)
+restartButton.addEventListener('click', () => {
+    restartButton.innerText = "Yeniden Oyna ↻"
+    startGame();
+})
 
 function startGame() {
     turn = 1;
@@ -41,13 +45,13 @@ function handleClick(e) {
 
     // make a move
     makeMove(cell, currentClass);
+
     // check win
     if (checkWin(currentClass)) {
         console.log(currentClass + " wins");
         finishGame(currentClass);
     }
-    // check tie
-    if(isTie()){
+    else if(isTie()){ // check tie
         finishGame(2);
     }
     // change turn
@@ -71,11 +75,11 @@ function checkWin(currentClass) {
 function finishGame(winner){
     if (winner === 2)
     {
-        finalMessageText.innerText = "It's a tie";
+        finalMessageText.innerText = "Berabere!";
     }
     else
     {
-        finalMessageText.innerText = winner + " wins";
+        finalMessageText.innerText = "Kazanan: " + winner.toUpperCase() + "!";
     }
     finalMessageElement.classList.add('show');
 }
