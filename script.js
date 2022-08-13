@@ -4,7 +4,7 @@ const finalMessageElement = document.getElementById('finalMessage');
 const finalMessageText = document.querySelector('[final-message-text]');
 const restartButton = document.getElementById("restartButton");
 const buttonText = document.getElementById("restartButton")
-let turn; // x is o, 1 is x
+let turn = 1; // 0 is o, 1 is x
 const x_class = 'x';
 const o_class = 'o';
 const winning_combinatinos = [
@@ -26,7 +26,6 @@ restartButton.addEventListener('click', () => {
 })
 
 function startGame() {
-    turn = 1;
     cellElements.forEach(cell => {
         cell.classList.remove(x_class);
         cell.classList.remove(o_class);
