@@ -110,7 +110,7 @@ body {
     justify-content: top;
     align-items: center;
     font: bold 50px sans-serif;
-    font-size: 6rem;
+    font-size: 3rem;
     flex-direction: column;
 }
 
@@ -119,8 +119,8 @@ body {
     border: none;
     border-radius: 5px;
     padding: .25em .5em;
-    font: bold 50px sans-serif;
-    font-size: 4srem;
+    font: bold sans-serif;
+    font-size: 30px ;
     cursor: pointer;
 }
 .final-message button:hover{
@@ -129,6 +129,5 @@ body {
 }
 
 .final-message.show {
-    
     display: flex;
 }
