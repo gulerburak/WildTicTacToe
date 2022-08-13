@@ -1,0 +1,134 @@
+/*Everything is border-box*/
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.board {
+  display: grid;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  grid-template-columns: repeat(3, auto);
+}
+.cell{
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  position: relative;
+}
+.cell:first-child, .cell:nth-child(2), .cell:nth-child(3){
+  border-top: none;
+}
+.cell:nth-child(3n+1){
+    border-left: none;
+}
+.cell:nth-child(3n+3){
+    border-right: none;
+}
+.cell:nth-child(7), .cell:nth-child(8), .cell:nth-child(9){
+    border-bottom: none;
+}
+
+.cell.x, .cell.o{
+  cursor: not-allowed;
+}
+
+.cell.x::before,
+.cell.x::after,
+.cell.o::before{
+  background-color: black;
+}
+
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after,
+.board.o .cell:not(.x):not(.o):hover::before{
+    background-color: lightgray;
+}
+
+.cell.x::before, .cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after
+{
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 90px;
+}
+.cell.x::before,
+.board.x .cell:not(.x):not(.o):hover::before{
+    transform: rotate(45deg);
+}
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::after{
+    transform: rotate(-45deg);
+}
+
+
+.cell.o::before, .cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::before,
+.board.o .cell:not(.x):not(.o):hover::after{
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    
+}
+.cell.o::before,
+.board.o .cell:not(.x):not(.o):hover::before{
+    width: 90px;
+    height: 90px;
+}
+.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::after{
+    width: 60px;
+    height: 60px;
+    background-color: white;
+}
+/* Final Message */
+.final-message{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(166, 177, 225, 0.3);
+    justify-content: top;
+    align-items: center;
+    font: bold 50px sans-serif;
+    font-size: 6rem;
+    flex-direction: column;
+}
+
+.final-message button{
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: .25em .5em;
+    font: bold 50px sans-serif;
+    font-size: 4srem;
+    cursor: pointer;
+}
+.final-message button:hover{
+    background-color: black;
+    color: rgb(166, 177, 255);
+}
+
+.final-message.show {
+    
+    display: flex;
+}
